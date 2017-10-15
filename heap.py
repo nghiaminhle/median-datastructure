@@ -50,27 +50,30 @@ class MedianHeap:
             self.center = HeapNode(value)
             return
         if value > self.center.value:
-            right_node = HeapNode(value)
-            self.center.add_node(right_node)
+            self.center.add_node(HeapNode(value))
         else:
-            left_node = HeapNode(value, is_right=False)
-            self.center.add_node(left_node)
+            self.center.add_node(HeapNode(value, is_right=False))
 
         if self.center.left_count < self.center.right_count -1:
-            self.center.right.left = self.center
-            self.center.right.left_count = self.center.left_count + 1
-            self.center.right_count = 0
-            right = self.center.right
-            self.center.right = None
-            self.center = right
-
+            self.move_center_to_right()
         elif self.center.right_count< self.center.left_count -1:
-            self.center.left.right = self.center
-            self.center.left.right_count = self.center.right_count + 1
-            self.center.left_count = 0
-            left = self.center.left
-            self.center.left = None
-            self.center = left
+            self.move_center_to_left()
+    
+    def move_center_to_right(self):
+        self.center.right.left = self.center
+        self.center.right.left_count = self.center.left_count + 1
+        self.center.right_count = 0
+        right = self.center.right
+        self.center.right = None
+        self.center = right
+    
+    def move_center_to_left(self):
+        self.center.left.right = self.center
+        self.center.left.right_count = self.center.right_count + 1
+        self.center.left_count = 0
+        left = self.center.left
+        self.center.left = None
+        self.center = left
 
     def get_median(self):
         if self.center.left_count == self.center.right_count:
