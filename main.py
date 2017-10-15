@@ -47,7 +47,7 @@ class MedianStore:
         else:
             return self.index_values[center].value
 
-def test():
+def main():
     testcases = [
         [[1, 3, 9, 5, 7, 5, 0, 4, 3, 2, 9, 1, 0], [1, 2, 3, 4, 5, 5, 5, 4.5, 4, 3.5, 4, 3.5, 3]],
         [[6, 1, 2], [6, 3.5, 2]],
@@ -65,15 +65,6 @@ def test():
         for k, number in enumerate(case[0]):
             median_list.add_number(number)
             assert median_list.get_median() == case[1][k]
-
-def print_tree(root: Node):
-    if root != None:
-        print_tree(root.left)
-        print(root.label, root.value)
-        print_tree(root.rigt)
-
-def main():
-    test()
     
 if __name__ == "__main__":
     main()
