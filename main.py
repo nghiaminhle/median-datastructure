@@ -73,28 +73,7 @@ def print_tree(root: Node):
         print_tree(root.rigt)
 
 def main():
-    #median_store = MedianStore()
-    #median_store.add_number(3)
-    #median_store.add_number(9)
-    #median_store.add_number(2)
-    #median_store.add_number(5)
-    #median_store.add_number(2)
-    
-    #median_store.add_number(2)
-    #median_store.add_number(2)
-    #median_store.add_number(5)
-    
-    #print_tree(median_store.root)
-
-    #for i in range(0, median_store.count):
-    #    print(median_store.index_values[i].value)
-    
-    #print('median:', median_store.get_median())
-    
     test()
     
-
-    
-
 if __name__ == "__main__":
     main()
