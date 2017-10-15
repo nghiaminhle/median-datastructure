@@ -28,6 +28,15 @@ class MedianStore:
             
         self.count += 1
 
+    def get_median(self):
+        if self.count == 1:
+            return self.index_values[self.count - 1].value
+        center = int(self.count/2)
+        if int(self.count % 2) == 0:
+            return (self.index_values[center].value + self.index_values[center-1].value)/2
+        else:
+            return self.index_values[center].value
+        
     def shift_index(self, from_index):
         t1 = self.index_values[from_index]
         t2 = None
@@ -37,15 +46,6 @@ class MedianStore:
             self.index_values[i + 1] = t1
             t1 = t2
             self.value_index[self.index_values[i].label] += 1
-
-    def get_median(self):
-        if self.count == 1:
-            return self.index_values[self.count - 1].value
-        center = int(self.count/2)
-        if int(self.count % 2) == 0:
-            return (self.index_values[center].value + self.index_values[center-1].value)/2
-        else:
-            return self.index_values[center].value
 
 def main():
     testcases = [
