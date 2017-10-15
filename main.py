@@ -46,14 +46,6 @@ class MedianStore:
         else:
             return self.index_values[center].value
 
-
-def travel_tree(root: Node):
-    if root != None:
-        travel_tree(root.left)
-        print(root.value, root.label)
-        travel_tree(root.rigt)
-
-
 def main():
     median_store = MedianStore()
     median_store.add_number(7)
